@@ -1,4 +1,3 @@
-
 public class Address {
     protected String city,state,country;
 
