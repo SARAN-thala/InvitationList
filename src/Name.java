@@ -8,11 +8,11 @@ public class Name {
         this.lastName = lastName;
     }
 
-    public String firstLast(String separator) {
-        return firstName + separator + lastName;
+    public String firstLast() {
+        return this.firstName + " " + this.lastName;
     }
 
-    public String lastFirst(String separator) {
-        return lastName + separator + firstName;
+    public String lastFirst() {
+        return this.lastName + ", " + this.firstName;
     }
 }

@@ -1,19 +1,19 @@
 
-public enum  Gender {
-    Male("Mr"),Female("Ms");
+public enum Gender {
+    Male {
+        @Override
+        public String title() {
+            return "Mr ";
+        }
+    },
+    Female {
+        @Override
+        public String title() {
+            return "Ms ";
+        }
+    };
 
-    private String title;
-
-    Gender(String title) {
-        this.title = title;
-    }
-
-    @Override
-    public String toString() {
-        return name();
-    }
-
-    public String getTitle() {
-        return title;
+    public String title() {
+        return "";
     }
 }
