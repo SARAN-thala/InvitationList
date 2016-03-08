@@ -23,6 +23,5 @@ public class Address {
         return city + ", " +
                 state + ", " +
                 country;
-
     }
 }

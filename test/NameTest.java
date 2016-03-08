@@ -14,12 +14,4 @@ public class NameTest {
         Name name = new Name("SaranRaj", "Sekar");
         assertEquals("Sekar, SaranRaj", name.lastFirst());
     }
-
-    @Test
-    public void test_that_gives_the_last_and_first_with_comma_name_of_a_person_with_suffix_Mr() throws Exception {
-        Name name = new Name("SaranRaj", "Sekar");
-//        Gender male = Gender.Male;
-
-        assertEquals("Mr Sekar, SaranRaj", name.lastFirst());
-    }
 }

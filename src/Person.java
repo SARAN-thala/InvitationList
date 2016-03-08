@@ -4,7 +4,7 @@ public class Person {
     private int age;
     private Gender gender;
 
-    public Person(Name name, Address address,Gender gender, int age) {
+    public Person(Name name, Gender gender, int age, Address address) {
         this.name = name;
         this.gender = gender;
         this.age = age;
@@ -15,8 +15,8 @@ public class Person {
         return (choice) ? name.firstLast() : name.lastFirst();
     }
 
-    public String getNameWithTitle(boolean choice){
-        return gender.title()+getName(choice);
+    public String getNameWithTitle(boolean choice) {
+        return gender.title() + getName(choice);
     }
 
     public String getAddress() {
@@ -34,6 +34,6 @@ public class Person {
 
     public String getNameWithCountry(boolean choice) {
         String name = getName(choice);
-        return gender.title()+name + ", " + address.getCountry();
+        return gender.title() + name + ", " + address.getCountry();
     }
 }

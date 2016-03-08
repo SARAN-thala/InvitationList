@@ -2,14 +2,14 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FormalGreeting {
+public class InvitationLabel {
     protected String[] records;
 
-    public FormalGreeting(String[] records) {
+    public InvitationLabel(String[] records) {
         this.records = records;
     }
 
-    public ArrayList<String> getFormalRepresentation(String records) throws IOException{
+    public ArrayList<String> getFormalInvitation(String records) throws IOException{
         ReadFile readFile = new ReadFile(records);
         List<String> lines = readFile.getList();
         ArrayList<String> list = new ArrayList<>();
