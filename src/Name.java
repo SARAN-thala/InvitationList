@@ -1,7 +1,7 @@
 
 public class Name {
-    protected String firstName;
-    protected String lastName;
+    private final String firstName;
+    private final String lastName;
 
     public Name(String firstName, String lastName) {
         this.firstName = firstName;

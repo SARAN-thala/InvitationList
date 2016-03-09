@@ -1,10 +1,10 @@
 public class Address {
-    protected String city, state, country;
+    private final String city, state, country;
 
     public Address(String city, String state, String country) {
-        this.country = country;
-        this.state = state;
         this.city = city;
+        this.state = state;
+        this.country = country;
     }
 
     public String getCity() {
@@ -19,9 +19,8 @@ public class Address {
         return country;
     }
 
+    @Override
     public String toString() {
-        return city + ", " +
-                state + ", " +
-                country;
+        return this.city + ", " + this.state + ", " + this.country;
     }
 }

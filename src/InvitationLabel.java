@@ -1,26 +1,47 @@
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 
 public class InvitationLabel {
-    protected String[] records;
+    private final ArrayList<Person> personalDetails;
+    private ArrayList<String> list = new ArrayList<>();
 
-    public InvitationLabel(String[] records) {
-        this.records = records;
+    public InvitationLabel(ArrayList<Person> details) {
+        this.personalDetails = details;
     }
 
-    public ArrayList<String> getFormalInvitation(String records) throws IOException{
-        ReadFile readFile = new ReadFile(records);
-        List<String> lines = readFile.getList();
-        ArrayList<String> list = new ArrayList<>();
-        for (String line : lines) {
-            String[] array = line.split(",");
-            Gender gender = array[2].contains("Female") ? Gender.Female : Gender.Male;
-            Address address = new Address(array[4],array[5],array[6]);
-            int age = Integer.parseInt(array[3]);
-            Name name = new Name(array[0],array[1]);
-            Person person = new Person(name,gender,age,address);
+    public String getNamesWithAddress(String opt, String preferredCountry) throws Exception {
+        list.clear();
+        for (Person p : personalDetails) {
+            String representation = p.withAddressAndStyle(opt, preferredCountry);
+            if (!representation.equals(""))
+                list.add(representation);
         }
-        return list;
+        return representation();
+    }
+
+    public String getName(String opt) throws Exception {
+        list.clear();
+        for (Person p : personalDetails) {
+            String representation = p.keyForNameFormat(opt);
+            list.add(representation);
+        }
+        return representation();
+    }
+
+    public String representation() {
+        String str = "";
+        for (int i = 0; i < list.size(); i++) {
+            str += (i == list.size() - 1) ? list.get(i) : list.get(i) + "\n";
+        }
+        return str;
+    }
+
+    public String getNameWithAge(String opt, String country, String age) throws Exception {
+        list.clear();
+        for (Person p : personalDetails) {
+            String representation = p.withAddressAndAge(opt, country, age);
+            if (!(representation.equals("")))
+                list.add(representation);
+        }
+        return representation();
     }
 }
