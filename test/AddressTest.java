@@ -13,21 +13,21 @@ public class AddressTest {
 
     @Test
     public void test_get_city() throws Exception {
-        assertEquals("Chennai",address.getCity());
+        assertEquals("Chennai", address.getCity());
     }
 
     @Test
     public void test_get_state() throws Exception {
-        assertEquals("TamilNadu",address.getState());
+        assertEquals("TamilNadu", address.getState());
     }
 
     @Test
     public void test_get_country() throws Exception {
-        assertEquals("India",address.getCountry());
+        assertEquals("India", address.getCountry());
     }
 
     @Test
     public void test_to_string() throws Exception {
-        assertEquals("Chennai, TamilNadu, India",address.toString());
+        assertEquals("Chennai, TamilNadu, India", address.toString());
     }
 }
