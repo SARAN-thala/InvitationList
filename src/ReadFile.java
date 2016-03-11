@@ -14,7 +14,7 @@ public class ReadFile {
         File file = new File(this.fileName);
         String[] fileContent = readFile(file);
         ArrayList<Person> arrayList = new ArrayList<>();
-        getFormal(fileContent,arrayList);
+        getFormal(fileContent, arrayList);
         return arrayList;
     }
 
@@ -30,10 +30,9 @@ public class ReadFile {
         Name name = new Name(split[0], split[1]);
         Gender gender = split[2].contains("Female") ? Gender.Female : Gender.Male;
         int age = Integer.parseInt(split[3]);
-        Address address = new Address(split[4],split[5],split[6]);
-        return new Person(name,gender,age,address);
+        Address address = new Address(split[4], split[5], split[6]);
+        return new Person(name, gender, age, address);
     }
-
 
     private String[] readFile(File file) throws IOException {
         FileReader fileReader = new FileReader(file);

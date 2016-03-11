@@ -9,7 +9,7 @@ public class InvitationLabel {
     }
 
     public String getNamesWithAddress(String opt, String preferredCountry) throws Exception {
-        list.clear();
+//        list.clear();
         for (Person p : personalDetails) {
             String representation = p.withAddressAndStyle(opt, preferredCountry);
             if (!representation.equals(""))
@@ -18,8 +18,8 @@ public class InvitationLabel {
         return representation();
     }
 
-    public String getName(String opt) throws Exception {
-        list.clear();
+    public String getName(String opt)  {
+//        list.clear();
         for (Person p : personalDetails) {
             String representation = p.keyForNameFormat(opt);
             list.add(representation);
@@ -36,7 +36,7 @@ public class InvitationLabel {
     }
 
     public String getNameWithAge(String opt, String country, String age) throws Exception {
-        list.clear();
+//        list.clear();
         for (Person p : personalDetails) {
             String representation = p.withAddressAndAge(opt, country, age);
             if (!(representation.equals("")))

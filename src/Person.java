@@ -1,3 +1,5 @@
+import java.util.Objects;
+
 public class Person {
     private final Name name;
     private final Address address;
@@ -15,7 +17,7 @@ public class Person {
         return (choice) ? name.firstLast() : name.lastFirst();
     }
 
-    public String keyForNameFormat(String opt) throws Exception {
+    public String keyForNameFormat(String opt)  {
         if (opt.equals("--firstLast") || opt.equals("-f"))
             return gender.title() + name.firstLast();
         if (opt.equals("--lastFirst") || opt.equals("-l"))
@@ -40,6 +42,11 @@ public class Person {
         return getNameWithCountry(true);
     }
 
+    public String getNameWithCountry(boolean choice) {
+        String name = getName(choice);
+        return gender.title() + name + ", " + address.getCountry();
+    }
+
     public String withAddressAndStyle(String opt, String preferredCountry) throws Exception {
         String countryName = "";
         if (address.getCountry().equals(preferredCountry))
@@ -47,16 +54,10 @@ public class Person {
         return countryName;
     }
 
-    public String getNameWithCountry(boolean choice) {
-        String name = getName(choice);
-        return gender.title() + name + ", " + address.getCountry();
-    }
-
     public String withAddressAndAge(String opt, String country, String legalAge) throws Exception {
         if (Integer.parseInt(String.valueOf(age)) >= Integer.parseInt(legalAge))
-            if (!(withAddressAndStyle(opt, country) == ""))
+            if (!(Objects.equals(withAddressAndStyle(opt, country), "")))
                 return withAddressAndStyle(opt, country) + ", " + age;
         return "";
     }
-
 }
