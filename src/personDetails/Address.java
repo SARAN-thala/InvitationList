@@ -1,3 +1,7 @@
+package personDetails;
+
+import java.util.Objects;
+
 public class Address {
     private final String city, state, country;
 

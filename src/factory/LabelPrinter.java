@@ -1,11 +1,17 @@
-import java.util.ArrayList;
+package factory;
+
+import handlers.CreateDataStructure;
+import handlers.ReadFile;
+
+import java.io.IOException;
 
 public class LabelPrinter {
 
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) throws IOException {
         ReadFile readFile = new ReadFile(args[1]);
-        ArrayList<Person> list = readFile.getList();
-        InvitationLabel invitationLabel = new InvitationLabel(list);
+        String guestDetails = readFile.fileContent();
+        CreateDataStructure guestRecords = new CreateDataStructure(guestDetails);
+        InvitationLabel invitationLabel = new InvitationLabel(guestRecords.getList());
         if (args.length == 2)
             System.out.println(invitationLabel.getName(args[0]));
         if (args.length == 3)

@@ -1,3 +1,7 @@
+package factory;
+
+import personDetails.Person;
+
 import java.util.ArrayList;
 
 public class InvitationLabel {
@@ -8,8 +12,7 @@ public class InvitationLabel {
         this.personalDetails = details;
     }
 
-    public String getNamesWithAddress(String opt, String preferredCountry) throws Exception {
-//        list.clear();
+    public String getNamesWithAddress(String opt, String preferredCountry){
         for (Person p : personalDetails) {
             String representation = p.withAddressAndStyle(opt, preferredCountry);
             if (!representation.equals(""))
@@ -19,7 +22,6 @@ public class InvitationLabel {
     }
 
     public String getName(String opt)  {
-//        list.clear();
         for (Person p : personalDetails) {
             String representation = p.keyForNameFormat(opt);
             list.add(representation);
@@ -35,8 +37,7 @@ public class InvitationLabel {
         return str;
     }
 
-    public String getNameWithAge(String opt, String country, String age) throws Exception {
-//        list.clear();
+    public String getNameWithAge(String opt, String country, String age){
         for (Person p : personalDetails) {
             String representation = p.withAddressAndAge(opt, country, age);
             if (!(representation.equals("")))

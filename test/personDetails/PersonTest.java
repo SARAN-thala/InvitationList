@@ -1,7 +1,10 @@
+package personDetails;
+
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static junit.framework.TestCase.assertEquals;
+import static org.junit.Assert.assertFalse;
 
 public class PersonTest {
 
