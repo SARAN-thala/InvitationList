@@ -3,15 +3,15 @@ package personDetails;
 public class Age {
     private int age;
 
-    public Age(String age) {
-        this.age = Integer.parseInt(age);
+    public Age(int age) {
+        this.age = age;
     }
 
-    public boolean isLegal(String age) {
-        return this.age > Integer.parseInt(age);
+    boolean isOlderThan(int legalAge) {
+        return this.age > legalAge;
     }
 
-    public int getAge() {
-        return age;
+    String getAge() {
+        return "" + age;
     }
 }

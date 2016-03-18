@@ -5,61 +5,52 @@ import java.util.Objects;
 public class Person {
     private final Name name;
     private final Address address;
-    private final int age;
+    private final Age age;
     private final Gender gender;
 
-    public Person(Name name, Gender gender, int age, Address address) {
+    public Person(Name name, Gender gender, Age age, Address address) {
         this.name = name;
         this.gender = gender;
         this.age = age;
         this.address = address;
     }
 
-    private String getName(boolean choice) {
-        return (choice) ? name.firstLast() : name.lastFirst();
+    public String getInformalName() {
+        return gender.prefix() + name.firstLast();
     }
 
-    public String keyForNameFormat(String opt)  {
-        if (opt.equals("--firstLast") || opt.equals("-f"))
-            return gender + name.firstLast();
-        if (opt.equals("--lastFirst") || opt.equals("-l"))
-            return gender + name.lastFirst();
-        return "";
+    public String getFormalName() {
+        return gender.prefix() + name.lastFirst();
     }
 
-    public String getNameWithTitle(boolean choice) {
-        return gender + getName(choice);
+
+    String getInformalNameWithAddress() {
+        return getInformalName() + "\n" + address.getFullAddress();
     }
 
-    public String getAddress() {
-        return getAddress(true);
+    String getFormalNameWithAddress() {
+        return getFormalName() + "\n" + address.getFullAddress();
     }
 
-    public String getAddress(boolean choice) {
-        String name = getName(choice);
-        return gender + name + ", " + address.toString();
+    String getInformalNameWithCountry() {
+        return getInformalName()+ ", " + address.getCountry();
     }
 
-    public String getNameWithCountry() {
-        return getNameWithCountry(true);
+    String getFormalNameWithCountry() {
+        return getFormalName()+ ", " + address.getCountry();
     }
 
-    public String getNameWithCountry(boolean choice) {
-        String name = getName(choice);
-        return gender + name + ", " + address.getCountry();
-    }
-
-    public String withAddressAndStyle(String opt, String preferredCountry){
+    public String withNameAndCountry(String opt, String preferredCountry) {
         String countryName = "";
         if (address.getCountry().equals(preferredCountry))
-            return keyForNameFormat(opt) + ", " + preferredCountry;
+            return getInformalName() + ", " + preferredCountry;
         return countryName;
     }
 
-    public String withAddressAndAge(String opt, String country, String legalAge){
-        if (Integer.parseInt(String.valueOf(age)) >= Integer.parseInt(legalAge))
-            if (!(Objects.equals(withAddressAndStyle(opt, country), "")))
-                return withAddressAndStyle(opt, country) + ", " + age;
+    public String withAddressAndAge(String opt, String country, int legalAge) {
+        if (age.isOlderThan(legalAge))
+            if (!(Objects.equals(withNameAndCountry(opt, country), "")))
+                return withNameAndCountry(opt, country) + ", " + age.getAge();
         return "";
     }
 }

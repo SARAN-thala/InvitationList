@@ -4,32 +4,37 @@ import personDetails.Person;
 
 import java.util.ArrayList;
 
-public class InvitationLabel {
+class InvitationLabel {
     private final ArrayList<Person> personalDetails;
     private ArrayList<String> list = new ArrayList<>();
 
-    public InvitationLabel(ArrayList<Person> details) {
+    InvitationLabel(ArrayList<Person> details) {
         this.personalDetails = details;
     }
 
-    public String getNamesWithAddress(String opt, String preferredCountry){
+    String getNamesWithAddress(String opt, String preferredCountry) {
         for (Person p : personalDetails) {
-            String representation = p.withAddressAndStyle(opt, preferredCountry);
+            String representation = p.withNameAndCountry(opt, preferredCountry);
             if (!representation.equals(""))
                 list.add(representation);
         }
         return representation();
     }
 
-    public String getName(String opt)  {
-        for (Person p : personalDetails) {
-            String representation = p.keyForNameFormat(opt);
-            list.add(representation);
+    String getName(String opt) {
+        for (Person p:personalDetails) {
+            if (opt.equals("--firstLast") || opt.equals("-f")) {
+                return p.getInformalName();
+            }
+            if (opt.equals("--lastFirst") || opt.equals("-l")) {
+                return p.getFormalName();
+            }
+            return "";
         }
         return representation();
     }
 
-    public String representation() {
+    private String representation() {
         String str = "";
         for (int i = 0; i < list.size(); i++) {
             str += (i == list.size() - 1) ? list.get(i) : list.get(i) + "\n";
@@ -37,7 +42,7 @@ public class InvitationLabel {
         return str;
     }
 
-    public String getNameWithAge(String opt, String country, String age){
+    String getNameWithAge(String opt, String country, int age) {
         for (Person p : personalDetails) {
             String representation = p.withAddressAndAge(opt, country, age);
             if (!(representation.equals("")))

@@ -9,11 +9,11 @@ public class Name {
         this.lastName = lastName;
     }
 
-    public String firstLast() {
-        return this.firstName + " " + this.lastName;
+    String firstLast() {
+        return String.format("%s %s", this.firstName, this.lastName);
     }
 
-    public String lastFirst() {
-        return this.lastName + ", " + this.firstName;
+    String lastFirst() {
+        return String.format("%s, %s", this.lastName, this.firstName);
     }
 }

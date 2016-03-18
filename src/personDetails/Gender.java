@@ -1,14 +1,15 @@
 package personDetails;
 
 public enum Gender {
-    Male {
-        public String toString() {
-            return "Mr ";
-        }
-    },
-    Female{
-        public String toString() {
-            return "Ms ";
-        }
+    Male("Mr "),
+    Female("Ms ");
+
+    private final String prefix;
+
+    Gender(String prefix) {
+        this.prefix = prefix;
+    }
+    public String  prefix() {
+        return prefix;
     }
 }
